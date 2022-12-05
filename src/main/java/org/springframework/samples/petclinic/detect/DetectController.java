@@ -38,6 +38,7 @@ public class DetectController {
 	@ResponseBody
 	public String getWebResult(@RequestParam String url) {
 		String ipAddress = mTracer.findIpAddress(url);
+
 		return ipAddress;
 	}
 }
