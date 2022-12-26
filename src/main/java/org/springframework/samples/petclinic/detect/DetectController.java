@@ -15,12 +15,15 @@ public class DetectController {
 
 	private Tracer mTracer;
 
+	private IpLookup mLookup;
+
 	public DetectController() {
-		this(new Tracer());
+		this(new Tracer(), new IpLookup());
 	}
 
-	public DetectController(Tracer tracer) {
+	public DetectController(Tracer tracer, IpLookup lkup) {
 		this.mTracer = tracer;
+		mLookup = lkup;
 	}
 
 	@InitBinder
@@ -34,11 +37,19 @@ public class DetectController {
 		return "detect/";
 	}
 
+//	@GetMapping("/detect")
+//	@ResponseBody
+//	public WebResult getWebResult(@RequestParam String url) {
+//		String ipAddress = mTracer.findIpAddress(url);
+//		WebResult result = mLookup.giveDetails(ipAddress);
+//		return result;
+//	}
+
 	@GetMapping("/detect")
 	@ResponseBody
-	public String getWebResult(@RequestParam String url) {
+	public Result getWebResult(@RequestParam String url) {
 		String ipAddress = mTracer.findIpAddress(url);
-
-		return ipAddress;
+		Result result = mLookup.giveDetails(ipAddress);
+		return result;
 	}
 }
