@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 
 public class Tracer {
 
+	private static final String HOST_NOT_FOUND = "Unable to resolve target system name";
+
 	private final String os = System.getProperty("os.name").toLowerCase();
 
 	public String findIpAddress(String url) {
@@ -43,6 +45,11 @@ public class Tracer {
 		}
 
 		assert route != null;
+		// If trace route gave output containing "Unable to resolve target system name" then no IP address exists.
+		// Then Website is fake and no longer active
+		if (route.contains(HOST_NOT_FOUND)) {
+			return "No IP address found";
+		}
 		String temp = Arrays.stream(route.split("\\[")).filter(line -> line.contains("]")).findFirst().orElse("");
 		if (!temp.isBlank())
 			return temp.substring(0, temp.length()-1);
