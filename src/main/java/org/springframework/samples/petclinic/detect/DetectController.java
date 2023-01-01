@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.File;
 import java.util.Map;
 
 @Controller
@@ -48,6 +49,9 @@ public class DetectController {
 	@GetMapping("/detect")
 	@ResponseBody
 	public Result getWebResult(@RequestParam String url) {
+		File file = new File("C:\\Users\\kajas\\Downloads\\zytr.xml");
+		XmlParser parser = new XmlParser();
+		parser.parseXmlGiveSuggestions(file);
 		String ipAddress = mTracer.findIpAddress(url);
 		Result result = mLookup.giveDetails(ipAddress);
 		return result;
