@@ -1,6 +1,6 @@
 package org.springframework.samples.petclinic.detect;
 
-import java.io.File;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -9,15 +9,17 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
+import org.xml.sax.InputSource;
 
 public class XmlParser {
 
-	public List<String> parseXmlGiveSuggestions(File inputFile) {
+	public List<String> parseXmlGiveSuggestions(String xml) {
 		List<String> list = new ArrayList<>();
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(inputFile);
+			InputSource inputSource = new InputSource(new StringReader(xml));
+			Document doc = dBuilder.parse(inputSource);
 			doc.getDocumentElement().normalize();
 			System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 			NodeList nList = doc.getElementsByTagName("CompleteSuggestion");
