@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{fragments/layout :: layout (~{::body},'webDetail')}">
+
+  <body>
+  
+  
+    <h2>Web Result</h2>
+  
+  
+    <table class="table table-striped" th:object="${webResult}">
+      <tr>
+        <th>Website</th>
+        <td><b th:text="*{website}"></b></td>
+      </tr>
+      <tr>
+        <th>Domain Name</th>
+        <td th:text="*{domainName}"></td>
+      </tr>
+      <tr>
+        <th>IP Address</th>
+        <td th:text="*{domainIPAddress}"></td>
+      </tr>
+      <tr>
+        <th>Continent Name</th>
+        <td th:text="*{continentName}"></td>
+      </tr>
+      <tr>
+        <th>Country Name</th>
+        <td th:text="*{countryName}"></td>
+      </tr>
+      <tr>
+        <th>Region</th>
+        <td th:text="*{region}"></td>
+      </tr>
+      <tr>
+        <th>City</th>
+        <td th:text="*{city}"></td>
+      </tr>
+      <tr>
+        <th>Current Time</th>
+        <td th:text="*{currentTime}"></td>
+      </tr>
+      <tr>
+        <th>ISP Name</th>
+        <td th:text="*{isp}"></td>
+      </tr>
+      <tr>
+        <th>Domain</th>
+        <td th:text="*{domain}"></td>
+      </tr>
+    </table>
+  
+    <br />
+    <br />
+    <br />
+    <h2>Google Suggestions</h2>
+  
+    <table class="table table-striped">
+  
+      <tr th:each="suggestion, iterStat : ${webResult.suggestions}">
+        <td valign="top">
+            <th th:text="${iterStat.index + 1} + '.    ' + ${suggestion}"></th>
+
+        </td>
+      </tr>
+  
+    </table>
+  
+  </body>
+
+</html>

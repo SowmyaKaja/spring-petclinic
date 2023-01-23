@@ -11,7 +11,9 @@ public class IpLookup {
 		RestTemplate restTemplate = new RestTemplate();
 //		WebResult result = restTemplate.getForObject(uri, WebResult.class);
 		Result result = restTemplate.getForObject(uri, Result.class);
-		System.out.println("Result: " + result);
+		String resp = restTemplate.getForObject(uri, String.class);
+		System.out.println("Response: " + resp);
+//		System.out.println("Result: " + result);
 		return result;
 	}
 }

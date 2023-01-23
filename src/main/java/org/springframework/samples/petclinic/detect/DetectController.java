@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Map;
@@ -42,13 +43,28 @@ public class DetectController {
 
 	@GetMapping("/detect")
 	@ResponseBody
-	public Result getWebResult(@RequestParam String url) {
+	public ModelAndView getWebResult(@RequestParam String url) {
+		ModelAndView mav = new ModelAndView("detect/webDetails");
 		XmlParser parser = new XmlParser();
 		String resp = mSuggestion.getSuggestions(url);
 		List<String> suggestions = parser.parseXmlGiveSuggestions(resp);
 		String ipAddress = mTracer.findIpAddress(url);
 		Result result = mLookup.giveDetails(ipAddress);
+		WebResult webResult = new WebResult(
+			url,
+			mSuggestion.getDomainName(),
+			result.getIp(),
+			result.getContinent(),
+			result.getCountry(),
+			result.getRegion(),
+			result.getCity(),
+			result.getTimezone().getCurrentTime(),
+			result.getConnection().getIsp(),
+			result.getConnection().getDomain(),
+			suggestions
+		);
+		mav.addObject(webResult);
 		System.out.println(suggestions);
-		return result;
+		return mav;
 	}
 }

@@ -24,7 +24,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 	"city",
 	"latitude",
 	"longitude",
-	"postal"
+	"postal",
+	"connection",
+	"timezone"
 })
 @Generated("jsonschema2pojo")
 public class Result {
@@ -53,6 +55,10 @@ public class Result {
 	private Double longitude;
 	@JsonProperty("postal")
 	private String postal;
+	@JsonProperty("connection")
+	private Connection connection;
+	@JsonProperty("timezone")
+	private Timezone timezone;
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -186,6 +192,26 @@ public class Result {
 		this.additionalProperties.put(name, value);
 	}
 
+	@JsonProperty("connection")
+	public Connection getConnection() {
+		return connection;
+	}
+
+	@JsonProperty("connection")
+	public void setConnection(Connection connection) {
+		this.connection = connection;
+	}
+
+	@JsonProperty("timezone")
+	public Timezone getTimezone() {
+		return timezone;
+	}
+
+	@JsonProperty("timezone")
+	public void setTimezone(Timezone timezone) {
+		this.timezone = timezone;
+	}
+
 	@Override
 	public String toString() {
 		return "Result{" +
@@ -202,6 +228,8 @@ public class Result {
 			", longitude=" + longitude +
 			", postal='" + postal + '\'' +
 			", additionalProperties=" + additionalProperties +
+			", connection=" + connection +
+			", timezone=" + timezone +
 			'}';
 	}
 }

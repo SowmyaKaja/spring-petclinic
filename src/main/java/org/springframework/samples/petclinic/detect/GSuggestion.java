@@ -4,17 +4,23 @@ import org.springframework.web.client.RestTemplate;
 
 public class GSuggestion {
 
+	private String domainName;
+
+	public String getDomainName() {
+		return domainName;
+	}
+
 	public String getSuggestions(String url) {
 
-		String query = extractDomain(url);
-		String uri = "https://suggestqueries.google.com/complete/search?output=toolbar&hl=en&q=" + query;
+		extractDomain(url);
+		String uri = "https://suggestqueries.google.com/complete/search?output=toolbar&hl=en&q=" + domainName;
 		System.out.println("URL is: " + uri);
 		RestTemplate restTemplate = new RestTemplate();
 		return restTemplate.getForObject(uri, String.class);
 	}
 
-	private String extractDomain(String url) {
-		String domain;
+	private void extractDomain(String url) {
+//		String domain;
 		String[] temp = url.split("\\.");
 		int count = temp.length;
 		/**
@@ -25,14 +31,13 @@ public class GSuggestion {
 		if (count >= 2) {
 			if (count == 4 || (count == 3 && temp[count - 2].length() <= 3)) {
 //				domain = temp[count-3]+"."+temp[count-2]+"."+temp[count-1];
-				domain = temp[count-3];
+				domainName = temp[count-3];
 			} else {
 //				domain = temp[count-2]+"."+temp[count-1];
-				domain = temp[count-2];
+				domainName = temp[count-2];
 			}
 		} else {
-			domain = temp[0];
+			domainName = temp[0];
 		}
-		return domain;
 	}
 }

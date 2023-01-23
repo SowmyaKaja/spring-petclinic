@@ -2,11 +2,8 @@ package org.springframework.samples.petclinic.detect;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class Tracer {
 
@@ -52,7 +49,7 @@ public class Tracer {
 		}
 		String temp = Arrays.stream(route.split("\\[")).filter(line -> line.contains("]")).findFirst().orElse("");
 		if (!temp.isBlank())
-			return temp.substring(0, temp.length()-1);
+			return temp.substring(0, temp.length() - 1);
 		else
 			return "No IP address found";
 	}

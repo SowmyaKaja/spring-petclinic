@@ -1,36 +1,145 @@
 package org.springframework.samples.petclinic.detect;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class WebResult {
-	private String ipaddress;
+	private String website;
 
-	private String continent_code;
+	private String domainName;
 
-	private String continent_name;
+	private String domainIPAddress;
 
-	private String country_code;
+	private String continentName;
 
-	private String country_name;
+	private String countryName;
+
+	private String region;
+
+	private String city;
+
+	private String currentTime;
+
+	private String isp;
+
+	private String domain;
+
+	private List<String> suggestions;
 
 	public WebResult() {
-		new WebResult("", "", "", "", "");
+		new WebResult(
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			new ArrayList<>());
 	}
 
-	public WebResult(String ipaddress, String continent_code, String continent_name, String country_code, String country_name) {
-		this.ipaddress = ipaddress;
-		this.continent_code = continent_code;
-		this.continent_name = continent_name;
-		this.country_code = country_code;
-		this.country_name = country_name;
+	public WebResult(String url, String domainName, String domainIPAddress, String continentName, String countryName, String region, String city, String currentTime, String isp, String domain, List<String> suggestions) {
+		this.website = url;
+		this.domainName = domainName;
+		this.domainIPAddress = domainIPAddress;
+		this.continentName = continentName;
+		this.countryName = countryName;
+		this.region = region;
+		this.city = city;
+		this.currentTime = currentTime;
+		this.isp = isp;
+		this.domain = domain;
+		this.suggestions = suggestions;
 	}
 
-	@Override
-	public String toString() {
-		return "WebResult{" +
-			"ipaddress='" + ipaddress + '\'' +
-			", continent_code='" + continent_code + '\'' +
-			", continent_name='" + continent_name + '\'' +
-			", country_code='" + country_code + '\'' +
-			", country_name='" + country_name + '\'' +
-			'}';
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	public String getDomainName() {
+		return domainName;
+	}
+
+	public void setDomainName(String domainName) {
+		this.domainName = domainName;
+	}
+
+	public String getDomainIPAddress() {
+		return domainIPAddress;
+	}
+
+	public void setDomainIPAddress(String domainIPAddress) {
+		this.domainIPAddress = domainIPAddress;
+	}
+
+	public String getContinentName() {
+		return continentName;
+	}
+
+	public void setContinentName(String continentName) {
+		this.continentName = continentName;
+	}
+
+	public String getCountryName() {
+		return countryName;
+	}
+
+	public void setCountryName(String countryName) {
+		this.countryName = countryName;
+	}
+
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCurrentTime() {
+		return currentTime;
+	}
+
+	public void setCurrentTime(String currentTime) {
+		this.currentTime = currentTime;
+	}
+
+	public String getIsp() {
+		return isp;
+	}
+
+	public void setIsp(String isp) {
+		this.isp = isp;
+	}
+
+	public String getDomain() {
+		return domain;
+	}
+
+	public void setDomain(String domain) {
+		this.domain = domain;
+	}
+
+	public List<String> getSuggestions() {
+		return suggestions;
+	}
+
+	public void setSuggestions(List<String> suggestions) {
+		this.suggestions = suggestions;
 	}
 }
