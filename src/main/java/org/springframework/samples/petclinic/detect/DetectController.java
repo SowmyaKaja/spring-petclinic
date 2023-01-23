@@ -44,7 +44,7 @@ public class DetectController {
 	@ResponseBody
 	public Result getWebResult(@RequestParam String url) {
 		XmlParser parser = new XmlParser();
-		String resp = mSuggestion.getSuggestions("sri");
+		String resp = mSuggestion.getSuggestions(url);
 		List<String> suggestions = parser.parseXmlGiveSuggestions(resp);
 		String ipAddress = mTracer.findIpAddress(url);
 		Result result = mLookup.giveDetails(ipAddress);
