@@ -1,11 +1,9 @@
 package org.springframework.samples.petclinic.detect;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -14,11 +12,11 @@ import java.util.Map;
 @Controller
 public class DetectController {
 
-	private Tracer mTracer;
+	private final Tracer mTracer;
 
-	private IpLookup mLookup;
+	private final IpLookup mLookup;
 
-	private GSuggestion mSuggestion;
+	private final GSuggestion mSuggestion;
 
 	public DetectController() {
 		this(new Tracer(), new IpLookup(), new GSuggestion());
@@ -66,5 +64,10 @@ public class DetectController {
 		mav.addObject(webResult);
 		System.out.println(suggestions);
 		return mav;
+	}
+
+	@PostMapping("/detect")
+	public ModelAndView urlSubmit(@RequestParam("url") String url) {
+		return getWebResult(url);
 	}
 }
