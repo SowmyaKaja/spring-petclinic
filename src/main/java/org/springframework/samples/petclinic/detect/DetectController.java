@@ -1,7 +1,6 @@
 package org.springframework.samples.petclinic.detect;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,7 +35,7 @@ public class DetectController {
 	@GetMapping("/detect/")
 	public String initFindForm(Map<String, Object> model) {
 		model.put("webResult", new WebResult());
-		return "detect/";
+		return "/detect?url=www.google.com";
 	}
 
 	@GetMapping("/detect")
@@ -48,19 +47,9 @@ public class DetectController {
 		List<String> suggestions = parser.parseXmlGiveSuggestions(resp);
 		String ipAddress = mTracer.findIpAddress(url);
 		Result result = mLookup.giveDetails(ipAddress);
-		WebResult webResult = new WebResult(
-			url,
-			mSuggestion.getDomainName(),
-			result.getIp(),
-			result.getContinent(),
-			result.getCountry(),
-			result.getRegion(),
-			result.getCity(),
-			result.getTimezone().getCurrentTime(),
-			result.getConnection().getIsp(),
-			result.getConnection().getDomain(),
-			suggestions
-		);
+		WebResult webResult = new WebResult(url, mSuggestion.getDomainName(), result.getIp(), result.getContinent(),
+				result.getCountry(), result.getRegion(), result.getCity(), result.getTimezone().getCurrentTime(),
+				result.getConnection().getIsp(), result.getConnection().getDomain(), suggestions);
 		mav.addObject(webResult);
 		System.out.println(suggestions);
 		return mav;
@@ -70,4 +59,5 @@ public class DetectController {
 	public ModelAndView urlSubmit(@RequestParam("url") String url) {
 		return getWebResult(url);
 	}
+
 }

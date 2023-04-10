@@ -38,9 +38,11 @@ public class XmlParser {
 					System.out.println("Suggestion: " + suggestion);
 				}
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 		return list;
 	}
+
 }

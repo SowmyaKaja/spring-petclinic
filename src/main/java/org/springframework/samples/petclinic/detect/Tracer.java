@@ -14,19 +14,19 @@ public class Tracer {
 	public String findIpAddress(String url) {
 		String route = "";
 		try {
-//			Process traceRt;
+			// Process traceRt;
 			String command;
 			if (os.contains("win")) {
 				command = "tracert " + url;
-			} else {
+			}
+			else {
 				command = "traceroute " + url;
 			}
-//			traceRt = Runtime.getRuntime().exec(command);
+			// traceRt = Runtime.getRuntime().exec(command);
 			ProcessBuilder ps = new ProcessBuilder("cmd.exe", "/c", command);
 			ps.redirectErrorStream(false);
 			Process pr = ps.start();
 			BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-			String line;
 			int numberOfLines = 0;
 			while ((route = in.readLine()) != null) {
 				System.out.println(route + "#####Line: " + numberOfLines);
@@ -37,12 +37,14 @@ public class Tracer {
 
 			pr.destroy();
 			in.close();
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		assert route != null;
-		// If trace route gave output containing "Unable to resolve target system name" then no IP address exists.
+		// If trace route gave output containing "Unable to resolve target system name"
+		// then no IP address exists.
 		// Then Website is fake and no longer active
 		if (route.contains(HOST_NOT_FOUND)) {
 			return "No IP address found";
@@ -53,4 +55,5 @@ public class Tracer {
 		else
 			return "No IP address found";
 	}
+
 }

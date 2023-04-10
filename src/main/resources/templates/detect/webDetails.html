@@ -4,7 +4,7 @@
 
 <head>
 
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +19,7 @@
   <![endif]-->
 
   <link th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet">
-  <link rel="stylesheet" th:href="@{/resources/css/petclinic.css}" />
+  <link rel="stylesheet" th:href="@{/resources/css/petclinic.css}"/>
 
 </head>
 
@@ -28,76 +28,153 @@
 <div class="container-fluid">
   <div class="container xd-container">
 
-    <h2>Web Result</h2>
+    <h2>Beware of scammers</h2>
 
-    <form action="#" th:action="@{/detect}" method="post">
-      <p>URL: <input type="text" name="url" /></p>
-      <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-    </form>
+    <p>This page and tools provided will help you stay safe on the Internet.</p>
 
+    <div class="container-search-bar">
+      <p>Please enter the web address for which you wanted to check details.</p>
 
-    <table class="table table-striped" th:object="${webResult}">
-      <tr>
-        <th>Website</th>
-        <td><b th:text="*{website}"></b></td>
-      </tr>
-      <tr>
-        <th>Domain Name</th>
-        <td th:text="*{domainName}"></td>
-      </tr>
-      <tr>
-        <th>IP Address</th>
-        <td th:text="*{domainIPAddress}"></td>
-      </tr>
-      <tr>
-        <th>Continent Name</th>
-        <td th:text="*{continentName}"></td>
-      </tr>
-      <tr>
-        <th>Country Name</th>
-        <td th:text="*{countryName}"></td>
-      </tr>
-      <tr>
-        <th>Region</th>
-        <td th:text="*{region}"></td>
-      </tr>
-      <tr>
-        <th>City</th>
-        <td th:text="*{city}"></td>
-      </tr>
-      <tr>
-        <th>Current Time</th>
-        <td th:text="*{currentTime}"></td>
-      </tr>
-      <tr>
-        <th>ISP Name</th>
-        <td th:text="*{isp}"></td>
-      </tr>
-      <tr>
-        <th>Domain</th>
-        <td th:text="*{domain}"></td>
-      </tr>
-    </table>
+      <h2 style="margin:4px">Web Result</h2>
 
-    <br />
-    <br />
-    <br />
-    <h2>Google Suggestions</h2>
+      <form action="#" th:action="@{/detect}" method="post">
+        <div class="url-container">
+        <div class="url">URL: <input type="text" name="url"/></div>
+        <div class="buttons"><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></div>
+        </div>
+      </form>
+    </div>
 
-    <table class="table table-striped">
+    <div class="container-results-pointers">
 
-      <tr th:each="suggestion, iterStat : ${webResult.suggestions}">
-        <td valign="top">
-        <th th:text="${iterStat.index + 1} + '.    ' + ${suggestion}"></th>
+      <div class="container-results-google">
+        <div class="container-results a">
+          <h2>URL information</h2>
+          <table class="table table-striped" th:object="${webResult}">
+            <tr>
+              <th>Website</th>
+              <td><b th:text="*{website}"></b></td>
+            </tr>
+            <tr>
+              <th>Domain Name</th>
+              <td th:text="*{domainName}"></td>
+            </tr>
+            <tr>
+              <th>IP Address</th>
+              <td th:text="*{domainIPAddress}"></td>
+            </tr>
+            <tr>
+              <th>Continent Name</th>
+              <td th:text="*{continentName}"></td>
+            </tr>
+            <tr>
+              <th>Country Name</th>
+              <td th:text="*{countryName}"></td>
+            </tr>
+            <tr>
+              <th>Region</th>
+              <td th:text="*{region}"></td>
+            </tr>
+            <tr>
+              <th>City</th>
+              <td th:text="*{city}"></td>
+            </tr>
+            <tr>
+              <th>Current Time</th>
+              <td th:text="*{currentTime}"></td>
+            </tr>
+            <tr>
+              <th>ISP Name</th>
+              <td th:text="*{isp}"></td>
+            </tr>
+            <tr>
+              <th>Domain</th>
+              <td th:text="*{domain}"></td>
+            </tr>
+          </table>
+        </div>
+        <div class="google-suggestions">
+          <h2>Google Suggestions</h2>
 
-        </td>
-      </tr>
+          <table class="table table-striped">
 
-    </table>
+            <tr th:each="suggestion, iterStat : ${webResult.suggestions}">
+              <td valign="top">
+              <th th:text="${iterStat.index + 1} + '.    ' + ${suggestion}"></th>
 
-    <br />
-    <br />
+              </td>
+            </tr>
 
+          </table>
+        </div>
+      </div>
+      <div class="container-pointers">
+        <h2 style="color: u">Things to look for</h2>
+        <table class="table table-striped">
+
+          <tr>
+            <th>Incorrect URL</th>
+          </tr>
+
+          <tr>
+            <th>Is the website using legitimate SSl/TLS certificates?</th>
+            <td>
+              <ol>
+                <li>Load the website that you want to check</li>
+                <li>Click the padlock icon next to the address bar to view the Site information window</li>
+                <li>Click Certificate</li>
+                <li>Choose the Details tab</li>
+                <li>Check the Subject field</li>
+              </ol>
+            </td>
+          </tr>
+
+          <tr>
+            <th>No Postal Address</th>
+          </tr>
+
+          <tr>
+            <th>Asks for Banking Information</th>
+          </tr>
+
+          <tr>
+            <th>Pay attention to address bar. https or http</th>
+          </tr>
+
+          <tr>
+            <th>Check the domain name. Misspelled words. Please find below the top 10 suggestions by Google.</th>
+          </tr>
+
+          <tr>
+            <th>Lookup domain details.</th>
+          </tr>
+
+          <tr>
+            <th>Watch for poor grammar and spelling.</th>
+          </tr>
+
+          <tr>
+            <th>Look for reliable contact information.</th>
+          </tr>
+
+          <tr>
+            <th>Use only secure payment options.</th>
+          </tr>
+
+          <tr>
+            <th>Walk away from deals that are too good to be true.</th>
+          </tr>
+
+          <tr>
+            <th>Run a virus scan.</th>
+          </tr>
+
+        </table>
+      </div>
+      <br/>
+      <br/>
+      <br/>
+    </div>
   </div>
 </div>
 

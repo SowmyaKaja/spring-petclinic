@@ -7909,7 +7909,8 @@ h2, .h2 {
   font-weight: 700;
   line-height: 24px;
   margin-bottom: 10px;
-  font-family: "montserratregular", sans-serif; }
+  font-family: "montserratregular", sans-serif;
+  color: #5f4b8b; }
 
 h3, .h3 {
   font-size: 16px;
@@ -8008,5 +8009,33 @@ strong {
   .index-page--subtitle {
     margin-top: 10px;
     margin-bottom: 30px; } }
+
+.container-results-pointers {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 12px; }
+
+.container-results-pointers > div {
+  flex: 1;
+  margin-right: 12px; }
+
+.container-results-pointers > div:last-child {
+  margin-right: 0; }
+
+.container-results-google {
+  height: auto;
+  border-width: 4px;
+  border-color: #0a53be; }
+
+.container-pointers {
+  height: auto; }
+
+.url-container {
+  display: flex; }
+
+.url, .buttons {
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid black; }
 
 /*# sourceMappingURL=../../../../../../target/petclinic.css.map */

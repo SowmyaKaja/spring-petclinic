@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WebResult {
+
 	private String website;
 
 	private String domainName;
@@ -27,21 +28,11 @@ public class WebResult {
 	private List<String> suggestions;
 
 	public WebResult() {
-		new WebResult(
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			new ArrayList<>());
+		new WebResult("", "", "", "", "", "", "", "", "", "", new ArrayList<>());
 	}
 
-	public WebResult(String url, String domainName, String domainIPAddress, String continentName, String countryName, String region, String city, String currentTime, String isp, String domain, List<String> suggestions) {
+	public WebResult(String url, String domainName, String domainIPAddress, String continentName, String countryName,
+			String region, String city, String currentTime, String isp, String domain, List<String> suggestions) {
 		this.website = url;
 		this.domainName = domainName;
 		this.domainIPAddress = domainIPAddress;
@@ -142,4 +133,5 @@ public class WebResult {
 	public void setSuggestions(List<String> suggestions) {
 		this.suggestions = suggestions;
 	}
+
 }

@@ -12,53 +12,53 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-	"ip",
-	"success",
-	"continent",
-	"continent_code",
-	"country",
-	"country_code",
-	"region",
-	"region_code",
-	"city",
-	"latitude",
-	"longitude",
-	"postal",
-	"connection",
-	"timezone"
-})
+@JsonPropertyOrder({ "ip", "success", "continent", "continent_code", "country", "country_code", "region", "region_code",
+		"city", "latitude", "longitude", "postal", "connection", "timezone" })
 @Generated("jsonschema2pojo")
 public class Result {
 
 	@JsonProperty("ip")
 	private String ip;
+
 	@JsonProperty("success")
 	private Boolean success;
+
 	@JsonProperty("continent")
 	private String continent;
+
 	@JsonProperty("continent_code")
 	private String continentCode;
+
 	@JsonProperty("country")
 	private String country;
+
 	@JsonProperty("country_code")
 	private String countryCode;
+
 	@JsonProperty("region")
 	private String region;
+
 	@JsonProperty("region_code")
 	private String regionCode;
+
 	@JsonProperty("city")
 	private String city;
+
 	@JsonProperty("latitude")
 	private Double latitude;
+
 	@JsonProperty("longitude")
 	private Double longitude;
+
 	@JsonProperty("postal")
 	private String postal;
+
 	@JsonProperty("connection")
 	private Connection connection;
+
 	@JsonProperty("timezone")
 	private Timezone timezone;
+
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -214,22 +214,12 @@ public class Result {
 
 	@Override
 	public String toString() {
-		return "Result{" +
-			"ip='" + ip + '\'' +
-			", success=" + success +
-			", continent='" + continent + '\'' +
-			", continentCode='" + continentCode + '\'' +
-			", country='" + country + '\'' +
-			", countryCode='" + countryCode + '\'' +
-			", region='" + region + '\'' +
-			", regionCode='" + regionCode + '\'' +
-			", city='" + city + '\'' +
-			", latitude=" + latitude +
-			", longitude=" + longitude +
-			", postal='" + postal + '\'' +
-			", additionalProperties=" + additionalProperties +
-			", connection=" + connection +
-			", timezone=" + timezone +
-			'}';
+		return "Result{" + "ip='" + ip + '\'' + ", success=" + success + ", continent='" + continent + '\''
+				+ ", continentCode='" + continentCode + '\'' + ", country='" + country + '\'' + ", countryCode='"
+				+ countryCode + '\'' + ", region='" + region + '\'' + ", regionCode='" + regionCode + '\'' + ", city='"
+				+ city + '\'' + ", latitude=" + latitude + ", longitude=" + longitude + ", postal='" + postal + '\''
+				+ ", additionalProperties=" + additionalProperties + ", connection=" + connection + ", timezone="
+				+ timezone + '}';
 	}
+
 }
