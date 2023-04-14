@@ -47,9 +47,12 @@ public class Tracer {
 		// then no IP address exists.
 		// Then Website is fake and no longer active
 		if (route.contains(HOST_NOT_FOUND)) {
+			// TODO: Show error that this website is not present
 			return "No IP address found";
 		}
-		String temp = Arrays.stream(route.split("\\[")).filter(line -> line.contains("]")).findFirst().orElse("");
+		String temp = Arrays.stream(route.split("\\["))
+										.filter(line -> line.contains("]"))
+										.findFirst().orElse("");
 		if (!temp.isBlank())
 			return temp.substring(0, temp.length() - 1);
 		else
