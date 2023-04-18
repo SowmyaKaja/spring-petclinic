@@ -35,7 +35,7 @@ public class DetectController {
 	@GetMapping("/detect/")
 	public String initFindForm(Map<String, Object> model) {
 		model.put("webResult", new WebResult());
-		return "/detect?url=www.google.com";
+		return "/detect";
 	}
 
 	@GetMapping("/detect")
